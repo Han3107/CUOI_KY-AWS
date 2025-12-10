@@ -1,0 +1,243 @@
+BÀI KIỂM TRA TRẮC NGHIỆM - WINDOWS SERVER & NETWORKING
+
+Câu 1: Định dạng ổ đĩa nào hỗ trợ kích thước ổ đĩa lên đến 18 exabyte?
+a. ReFS ✓
+b. NTFS
+c. FAT32
+d. exFAT
+
+Câu 2: ReFS được thiết kế để giải quyết vấn đề gì?
+a. Tăng tốc độ truy cập dữ liệu
+b. Cải thiện khả năng phục hồi ✓
+c. Giảm dung lượng lưu trữ
+d. Tương thích với hệ điều hành cũ
+
+Câu 3: Các phương pháp phân phối hồ sơ VPN nào được hỗ trợ?
+a. Scripts ✓
+b. Manual configuration only
+c. Automatic detection
+d. Bluetooth pairing
+
+Câu 4: Để quản lý nhóm trong AD DS, công cụ nào có thể được sử dụng?
+a. Active Directory Users and Computers
+b. PowerShell
+c. Tất cả các công cụ trên ✓
+d. Group Policy Management Console
+
+Câu 5: Giao thức xác thực nào cung cấp bảo mật mạnh nhất?
+a. PAP
+b. CHAP
+c. MS-CHAP
+d. EAP ✓
+
+Câu 6: Vai trò của Network Policy Server (NPS) là gì?
+a. Proxy RADIUS ✓
+b. DNS Server
+c. File Server
+d. Web Server
+
+Câu 7: Nếu hai router có cùng priority trong chọn DR, yếu tố quyết định là?
+a. MAC address thấp hơn
+b. Thời gian khởi động trước
+c. Băng thông cao hơn
+d. Router ID cao hơn ✓
+
+Câu 8: Nhóm nào trong AD DS chỉ dùng với ứng dụng email?
+a. Nhóm bảo mật
+b. Nhóm phân phối ✓
+c. Nhóm toàn cục
+d. Nhóm cục bộ
+
+Câu 9: Record nào dùng để chỉ định máy chủ xử lý email cho một miền?
+a. A Record
+b. MX ✓
+c. CNAME
+d. PTR
+
+Câu 10: Hello interval mặc định của OSPF là bao nhiêu giây?
+a. 5 giây
+b. 15 giây
+c. 30 giây
+d. 10 giây ✓
+
+Câu 11: Thành phần nào không phải của AD DS?
+a. Domain Controller
+b. Global Catalog
+c. Schema
+d. Workstation ✓
+
+Câu 12: DHCP failover cho phép:
+a. Một DHCP server dự phòng cho nhiều subnet
+b. Hai DHCP servers cung cấp địa chỉ IP cho cùng subnet ✓
+c. Tự động cấu hình DNS
+d. Phân bổ địa chỉ IPv6
+
+Câu 13: Cấu hình máy chủ VPN trong Windows Server 2016 cần tối thiểu bao nhiêu NIC?
+a. Một
+b. Ba
+c. Hai ✓
+d. Bốn
+
+Câu 14: Nhóm "Backup Operators" có thể khôi phục dữ liệu từ đâu?
+a. Từ bất kỳ nguồn sao lưu nào ✓
+b. Chỉ từ local backup
+c. Chỉ từ cloud backup
+d. Chỉ từ tape backup
+
+Câu 15: Để xác định IP từ tên miền, DNS sử dụng cơ chế nào?
+a. Forward resolution ✓
+b. Reverse resolution
+c. Dynamic resolution
+d. Static resolution
+
+Câu 16: Khác biệt chính giữa .adm và .admx trong Group Policy?
+a. .admx nhanh hơn .adm
+b. .adm hỗ trợ nhiều ngôn ngữ hơn
+c. .adm gây phình to SYSVOL nếu có nhiều GPO, .admx thì không ✓
+d. .admx chỉ dùng cho Windows 10
+
+Câu 17: Folder Redirection là gì?
+a. Thư mục đặt trên server nhưng hiển thị như nằm trên ổ cục bộ ✓
+b. Thư mục ẩn trên máy client
+c. Thư mục chỉ đọc
+d. Thư mục tạm thời
+
+Câu 18: NTFS hỗ trợ cluster size lớn nhất là:
+a. 512 KB
+b. 1024 KB
+c. 4096 KB
+d. 2048 KB ✓
+
+Câu 19: Tính năng giúp RIP không quảng bá tuyến học từ cùng giao tiếp?
+a. Route poisoning
+b. Split horizon ✓
+c. Hold-down timer
+d. Triggered update
+
+Câu 20: Quyền nên gán cho Creator/Owner ở thư mục gốc khi redirect?
+a. Read only
+b. Modify – This Folder Only
+c. Full control – Subfolders and Files Only ✓
+d. Write – This Folder, Subfolders and Files
+
+Câu 21: Công nghệ RAID nào không được sử dụng?
+a. RAID 2 ✓
+b. RAID 0
+c. RAID 1
+d. RAID 5
+
+Câu 22: Giao thức hỗ trợ thuật toán IPsec mới nhất (bảo mật/toàn vẹn/xác thực)?
+a. IKEv1
+b. L2TP
+c. IKEv2 ✓
+d. PPTP
+
+Câu 23: Khi nào dùng Logon Scripts trong Group Policy?
+a. Cài đặt phần mềm
+b. Cấu hình firewall
+c. Tạo user mới
+d. Ánh xạ ổ đĩa hoặc tác vụ khi người dùng đăng nhập ✓
+
+Câu 24: Tùy chọn Group Policy khác với Cài đặt Group Policy ở điểm nào?
+a. Tốc độ xử lý nhanh hơn
+b. Hỗ trợ nhiều hệ điều hành hơn
+c. Dễ cấu hình hơn
+d. Cho phép quản lý cài đặt trước đây không thể bằng GPO ✓
+
+Câu 25: TGT (Ticket Granting Ticket) phát hành bởi đâu khi user đăng nhập?
+a. Domain Controller ✓
+b. Client computer
+c. DNS Server
+d. DHCP Server
+
+Câu 26: RODC được triển khai để làm gì?
+a. Tăng tốc độ truy vấn DNS
+b. Cải thiện hiệu suất mạng
+c. Tăng cường bảo mật cho chi nhánh/văn phòng xa ✓
+d. Giảm băng thông sử dụng
+
+Câu 27: Chính sách nào không thuộc bảo mật tài khoản trong AD DS?
+a. Chính sách mật khẩu
+b. Chính sách bảo mật thông tin ✓
+c. Chính sách khóa tài khoản
+d. Chính sách Kerberos
+
+Câu 28: NTFS dùng danh sách nào để xác định quyền truy cập?
+a. Access Control List (ACL) ✓
+b. User Rights Assignment
+c. Security Policy
+d. Permission Matrix
+
+Câu 29: Record dùng để định vị dịch vụ trong Active Directory?
+a. SRV ✓
+b. A
+c. AAAA
+d. NS
+
+Câu 30: LSDB của các router trong cùng một vùng OSPF phải:
+a. Khác nhau hoàn toàn
+b. Giống nhau một phần
+c. Hoàn toàn giống nhau ✓
+d. Không liên quan đến nhau
+
+Câu 31: OU dùng để làm gì trong AD DS?
+a. Lưu trữ file
+b. Quản lý DNS
+c. Cấu hình DHCP
+d. Tổ chức các đối tượng trong một domain ✓
+
+Câu 32: Phương pháp xác định phạm vi của GPO bao gồm:
+a. Liên kết GPO với một OU ✓
+b. Tạo GPO mới
+c. Xóa GPO cũ
+d. Sao lưu GPO
+
+Câu 33: Cấu hình OSPF: lệnh gán mạng vào một vùng?
+a. ospf network area
+b. network "address" "wildcard-mask" area "area-id" ✓
+c. area network address
+d. set ospf area network
+
+Câu 34: Nhóm có quyền quản trị rộng cho hầu hết môi trường?
+a. Domain Admins
+b. Schema Admins
+c. Server Operators
+d. Enterprise Admins ✓
+
+Câu 35: Một DHCP scope phải chứa thông tin nào?
+a. Chỉ địa chỉ IP
+b. Chỉ subnet mask
+c. Chỉ default gateway
+d. Dải địa chỉ IP và subnet mask ✓
+
+Câu 36: Vì sao dùng Managed Service Accounts (MSA)?
+a. Tự động quản lý mật khẩu cho tài khoản dịch vụ ✓
+b. Tăng tốc độ đăng nhập
+c. Giảm dung lượng lưu trữ
+d. Cải thiện hiệu suất mạng
+
+Câu 37: Chức năng của DHCP relay agent là gì?
+a. Cấp phát địa chỉ IP tĩnh
+b. Chuyển tiếp broadcast DHCP sang DHCP server ở subnet khác ✓
+c. Quản lý DNS records
+d. Bảo mật kết nối DHCP
+
+Câu 38: FSMO viết tắt của gì trong AD DS?
+a. Flexible Single Master Operations ✓
+b. File System Master Operations
+c. Federated Security Master Operations
+d. Functional Server Management Operations
+
+Câu 39: Lệnh kích hoạt RIP trên router?
+a. enable rip
+b. router rip ✓
+c. rip enable
+d. start rip
+
+Câu 40: Thứ tự xử lý GPO mặc định trong Active Directory?
+a. Local → Site → Domain → OU ✓
+b. OU → Domain → Site → Local
+c. Site → Domain → OU → Local
+d. Domain → Site → OU → Local
+
+--- HẾT ---

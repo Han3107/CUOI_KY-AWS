@@ -1,0 +1,957 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bài Kiểm Tra Trắc Nghiệm - Windows Server & Networking</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            padding: 40px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 28px;
+        }
+        
+        .subtitle {
+            text-align: center;
+            color: #666;
+            margin-bottom: 30px;
+            font-size: 16px;
+        }
+        
+        .question {
+            background: #f8f9fa;
+            padding: 25px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .question-text {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .options {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        
+        .option {
+            display: flex;
+            align-items: center;
+            padding: 12px 15px;
+            background: white;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+        }
+        
+        .option input[type="radio"] {
+            margin-right: 12px;
+            cursor: pointer;
+            width: 18px;
+            height: 18px;
+        }
+        
+        .option label {
+            cursor: pointer;
+            flex: 1;
+            font-size: 15px;
+            color: #444;
+        }
+        
+        .option.correct {
+            background: #d4edda;
+            border-color: #28a745;
+        }
+        
+        .option.incorrect {
+            background: #f8d7da;
+            border-color: #dc3545;
+        }
+        
+        .submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: transform 0.2s;
+        }
+        
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .submit-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .result {
+            display: none;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+        
+        .result.show {
+            display: block;
+        }
+        
+        .result h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .result p {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        
+        .reset-btn {
+            margin-top: 20px;
+            padding: 12px 30px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        
+        .reset-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Bài Kiểm Tra Trắc Nghiệm</h1>
+        <div class="subtitle">Windows Server & Networking</div>
+        
+        <div class="progress-bar">
+            <div class="progress-fill" id="progressBar"></div>
+        </div>
+        
+        <form id="quizForm">
+
+            <div class="question">
+                <div class="question-text">Câu 1: Định dạng ổ đĩa nào hỗ trợ kích thước ổ đĩa lên đến 18 exabyte?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q1" value="a" id="q1a"><label for="q1a">a. ReFS</label></div>
+                    <div class="option"><input type="radio" name="q1" value="b" id="q1b"><label for="q1b">b. NTFS</label></div>
+                    <div class="option"><input type="radio" name="q1" value="c" id="q1c"><label for="q1c">c. FAT32</label></div>
+                    <div class="option"><input type="radio" name="q1" value="d" id="q1d"><label for="q1d">d. exFAT</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 2: ReFS được thiết kế để giải quyết vấn đề gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q2" value="a" id="q2a"><label for="q2a">a. Tăng tốc độ truy cập dữ liệu</label></div>
+                    <div class="option"><input type="radio" name="q2" value="b" id="q2b"><label for="q2b">b. Cải thiện khả năng phục hồi</label></div>
+                    <div class="option"><input type="radio" name="q2" value="c" id="q2c"><label for="q2c">c. Giảm dung lượng lưu trữ</label></div>
+                    <div class="option"><input type="radio" name="q2" value="d" id="q2d"><label for="q2d">d. Tương thích với hệ điều hành cũ</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 3: Các phương pháp phân phối hồ sơ VPN nào được hỗ trợ?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q3" value="a" id="q3a"><label for="q3a">a. Scripts</label></div>
+                    <div class="option"><input type="radio" name="q3" value="b" id="q3b"><label for="q3b">b. Manual configuration only</label></div>
+                    <div class="option"><input type="radio" name="q3" value="c" id="q3c"><label for="q3c">c. Automatic detection</label></div>
+                    <div class="option"><input type="radio" name="q3" value="d" id="q3d"><label for="q3d">d. Bluetooth pairing</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 4: Để quản lý nhóm trong AD DS, công cụ nào có thể được sử dụng?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q4" value="a" id="q4a"><label for="q4a">a. Active Directory Users and Computers</label></div>
+                    <div class="option"><input type="radio" name="q4" value="b" id="q4b"><label for="q4b">b. PowerShell</label></div>
+                    <div class="option"><input type="radio" name="q4" value="c" id="q4c"><label for="q4c">c. Tất cả các công cụ trên</label></div>
+                    <div class="option"><input type="radio" name="q4" value="d" id="q4d"><label for="q4d">d. Group Policy Management Console</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 5: Giao thức xác thực nào cung cấp bảo mật mạnh nhất?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q5" value="a" id="q5a"><label for="q5a">a. PAP</label></div>
+                    <div class="option"><input type="radio" name="q5" value="b" id="q5b"><label for="q5b">b. CHAP</label></div>
+                    <div class="option"><input type="radio" name="q5" value="c" id="q5c"><label for="q5c">c. MS-CHAP</label></div>
+                    <div class="option"><input type="radio" name="q5" value="d" id="q5d"><label for="q5d">d. EAP</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 6: Vai trò của Network Policy Server (NPS) là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q6" value="a" id="q6a"><label for="q6a">a. Proxy RADIUS</label></div>
+                    <div class="option"><input type="radio" name="q6" value="b" id="q6b"><label for="q6b">b. DNS Server</label></div>
+                    <div class="option"><input type="radio" name="q6" value="c" id="q6c"><label for="q6c">c. File Server</label></div>
+                    <div class="option"><input type="radio" name="q6" value="d" id="q6d"><label for="q6d">d. Web Server</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 7: Nếu hai router có cùng priority trong chọn DR, yếu tố quyết định là?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q7" value="a" id="q7a"><label for="q7a">a. MAC address thấp hơn</label></div>
+                    <div class="option"><input type="radio" name="q7" value="b" id="q7b"><label for="q7b">b. Thời gian khởi động trước</label></div>
+                    <div class="option"><input type="radio" name="q7" value="c" id="q7c"><label for="q7c">c. Băng thông cao hơn</label></div>
+                    <div class="option"><input type="radio" name="q7" value="d" id="q7d"><label for="q7d">d. Router ID cao hơn</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 8: Nhóm nào trong AD DS chỉ dùng với ứng dụng email?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q8" value="a" id="q8a"><label for="q8a">a. Nhóm bảo mật</label></div>
+                    <div class="option"><input type="radio" name="q8" value="b" id="q8b"><label for="q8b">b. Nhóm phân phối</label></div>
+                    <div class="option"><input type="radio" name="q8" value="c" id="q8c"><label for="q8c">c. Nhóm toàn cục</label></div>
+                    <div class="option"><input type="radio" name="q8" value="d" id="q8d"><label for="q8d">d. Nhóm cục bộ</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 9: Record nào dùng để chỉ định máy chủ xử lý email cho một miền?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q9" value="a" id="q9a"><label for="q9a">a. A Record</label></div>
+                    <div class="option"><input type="radio" name="q9" value="b" id="q9b"><label for="q9b">b. MX</label></div>
+                    <div class="option"><input type="radio" name="q9" value="c" id="q9c"><label for="q9c">c. CNAME</label></div>
+                    <div class="option"><input type="radio" name="q9" value="d" id="q9d"><label for="q9d">d. PTR</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 10: Hello interval mặc định của OSPF là bao nhiêu giây?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q10" value="a" id="q10a"><label for="q10a">a. 5 giây</label></div>
+                    <div class="option"><input type="radio" name="q10" value="b" id="q10b"><label for="q10b">b. 15 giây</label></div>
+                    <div class="option"><input type="radio" name="q10" value="c" id="q10c"><label for="q10c">c. 30 giây</label></div>
+                    <div class="option"><input type="radio" name="q10" value="d" id="q10d"><label for="q10d">d. 10 giây</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 11: Thành phần nào không phải của AD DS?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q11" value="a" id="q11a"><label for="q11a">a. Domain Controller</label></div>
+                    <div class="option"><input type="radio" name="q11" value="b" id="q11b"><label for="q11b">b. Global Catalog</label></div>
+                    <div class="option"><input type="radio" name="q11" value="c" id="q11c"><label for="q11c">c. Schema</label></div>
+                    <div class="option"><input type="radio" name="q11" value="d" id="q11d"><label for="q11d">d. Workstation</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 12: DHCP failover cho phép:</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q12" value="a" id="q12a"><label for="q12a">a. Một DHCP server dự phòng cho nhiều subnet</label></div>
+                    <div class="option"><input type="radio" name="q12" value="b" id="q12b"><label for="q12b">b. Hai DHCP servers cung cấp địa chỉ IP cho cùng subnet</label></div>
+                    <div class="option"><input type="radio" name="q12" value="c" id="q12c"><label for="q12c">c. Tự động cấu hình DNS</label></div>
+                    <div class="option"><input type="radio" name="q12" value="d" id="q12d"><label for="q12d">d. Phân bổ địa chỉ IPv6</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 13: Cấu hình máy chủ VPN trong Windows Server 2016 cần tối thiểu bao nhiêu NIC?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q13" value="a" id="q13a"><label for="q13a">a. Một</label></div>
+                    <div class="option"><input type="radio" name="q13" value="b" id="q13b"><label for="q13b">b. Ba</label></div>
+                    <div class="option"><input type="radio" name="q13" value="c" id="q13c"><label for="q13c">c. Hai</label></div>
+                    <div class="option"><input type="radio" name="q13" value="d" id="q13d"><label for="q13d">d. Bốn</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 14: Nhóm "Backup Operators" có thể khôi phục dữ liệu từ đâu?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q14" value="a" id="q14a"><label for="q14a">a. Từ bất kỳ nguồn sao lưu nào</label></div>
+                    <div class="option"><input type="radio" name="q14" value="b" id="q14b"><label for="q14b">b. Chỉ từ local backup</label></div>
+                    <div class="option"><input type="radio" name="q14" value="c" id="q14c"><label for="q14c">c. Chỉ từ cloud backup</label></div>
+                    <div class="option"><input type="radio" name="q14" value="d" id="q14d"><label for="q14d">d. Chỉ từ tape backup</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 15: Để xác định IP từ tên miền, DNS sử dụng cơ chế nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q15" value="a" id="q15a"><label for="q15a">a. Forward resolution</label></div>
+                    <div class="option"><input type="radio" name="q15" value="b" id="q15b"><label for="q15b">b. Reverse resolution</label></div>
+                    <div class="option"><input type="radio" name="q15" value="c" id="q15c"><label for="q15c">c. Dynamic resolution</label></div>
+                    <div class="option"><input type="radio" name="q15" value="d" id="q15d"><label for="q15d">d. Static resolution</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 16: Khác biệt chính giữa .adm và .admx trong Group Policy?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q16" value="a" id="q16a"><label for="q16a">a. .admx nhanh hơn .adm</label></div>
+                    <div class="option"><input type="radio" name="q16" value="b" id="q16b"><label for="q16b">b. .adm hỗ trợ nhiều ngôn ngữ hơn</label></div>
+                    <div class="option"><input type="radio" name="q16" value="c" id="q16c"><label for="q16c">c. .adm gây phình to SYSVOL nếu có nhiều GPO, .admx thì không</label></div>
+                    <div class="option"><input type="radio" name="q16" value="d" id="q16d"><label for="q16d">d. .admx chỉ dùng cho Windows 10</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 17: Folder Redirection là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q17" value="a" id="q17a"><label for="q17a">a. Thư mục đặt trên server nhưng hiển thị như nằm trên ổ cục bộ</label></div>
+                    <div class="option"><input type="radio" name="q17" value="b" id="q17b"><label for="q17b">b. Thư mục ẩn trên máy client</label></div>
+                    <div class="option"><input type="radio" name="q17" value="c" id="q17c"><label for="q17c">c. Thư mục chỉ đọc</label></div>
+                    <div class="option"><input type="radio" name="q17" value="d" id="q17d"><label for="q17d">d. Thư mục tạm thời</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 18: NTFS hỗ trợ cluster size lớn nhất là:</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q18" value="a" id="q18a"><label for="q18a">a. 512 KB</label></div>
+                    <div class="option"><input type="radio" name="q18" value="b" id="q18b"><label for="q18b">b. 1024 KB</label></div>
+                    <div class="option"><input type="radio" name="q18" value="c" id="q18c"><label for="q18c">c. 4096 KB</label></div>
+                    <div class="option"><input type="radio" name="q18" value="d" id="q18d"><label for="q18d">d. 2048 KB</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 19: Tính năng giúp RIP không quảng bá tuyến học từ cùng giao tiếp?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q19" value="a" id="q19a"><label for="q19a">a. Route poisoning</label></div>
+                    <div class="option"><input type="radio" name="q19" value="b" id="q19b"><label for="q19b">b. Split horizon</label></div>
+                    <div class="option"><input type="radio" name="q19" value="c" id="q19c"><label for="q19c">c. Hold-down timer</label></div>
+                    <div class="option"><input type="radio" name="q19" value="d" id="q19d"><label for="q19d">d. Triggered update</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 20: Quyền nên gán cho Creator/Owner ở thư mục gốc khi redirect?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q20" value="a" id="q20a"><label for="q20a">a. Read only</label></div>
+                    <div class="option"><input type="radio" name="q20" value="b" id="q20b"><label for="q20b">b. Modify – This Folder Only</label></div>
+                    <div class="option"><input type="radio" name="q20" value="c" id="q20c"><label for="q20c">c. Full control – Subfolders and Files Only</label></div>
+                    <div class="option"><input type="radio" name="q20" value="d" id="q20d"><label for="q20d">d. Write – This Folder, Subfolders and Files</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 21: Công nghệ RAID nào không được sử dụng?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q21" value="a" id="q21a"><label for="q21a">a. RAID 2</label></div>
+                    <div class="option"><input type="radio" name="q21" value="b" id="q21b"><label for="q21b">b. RAID 0</label></div>
+                    <div class="option"><input type="radio" name="q21" value="c" id="q21c"><label for="q21c">c. RAID 1</label></div>
+                    <div class="option"><input type="radio" name="q21" value="d" id="q21d"><label for="q21d">d. RAID 5</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 22: Giao thức hỗ trợ thuật toán IPsec mới nhất (bảo mật/toàn vẹn/xác thực)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q22" value="a" id="q22a"><label for="q22a">a. IKEv1</label></div>
+                    <div class="option"><input type="radio" name="q22" value="b" id="q22b"><label for="q22b">b. L2TP</label></div>
+                    <div class="option"><input type="radio" name="q22" value="c" id="q22c"><label for="q22c">c. IKEv2</label></div>
+                    <div class="option"><input type="radio" name="q22" value="d" id="q22d"><label for="q22d">d. PPTP</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 23: Khi nào dùng Logon Scripts trong Group Policy?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q23" value="a" id="q23a"><label for="q23a">a. Cài đặt phần mềm</label></div>
+                    <div class="option"><input type="radio" name="q23" value="b" id="q23b"><label for="q23b">b. Cấu hình firewall</label></div>
+                    <div class="option"><input type="radio" name="q23" value="c" id="q23c"><label for="q23c">c. Tạo user mới</label></div>
+                    <div class="option"><input type="radio" name="q23" value="d" id="q23d"><label for="q23d">d. Ánh xạ ổ đĩa hoặc tác vụ khi người dùng đăng nhập</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 24: Tùy chọn Group Policy khác với Cài đặt Group Policy ở điểm nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q24" value="a" id="q24a"><label for="q24a">a. Tốc độ xử lý nhanh hơn</label></div>
+                    <div class="option"><input type="radio" name="q24" value="b" id="q24b"><label for="q24b">b. Hỗ trợ nhiều hệ điều hành hơn</label></div>
+                    <div class="option"><input type="radio" name="q24" value="c" id="q24c"><label for="q24c">c. Dễ cấu hình hơn</label></div>
+                    <div class="option"><input type="radio" name="q24" value="d" id="q24d"><label for="q24d">d. Cho phép quản lý cài đặt trước đây không thể bằng GPO</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 25: TGT (Ticket Granting Ticket) phát hành bởi đâu khi user đăng nhập?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q25" value="a" id="q25a"><label for="q25a">a. Domain Controller</label></div>
+                    <div class="option"><input type="radio" name="q25" value="b" id="q25b"><label for="q25b">b. Client computer</label></div>
+                    <div class="option"><input type="radio" name="q25" value="c" id="q25c"><label for="q25c">c. DNS Server</label></div>
+                    <div class="option"><input type="radio" name="q25" value="d" id="q25d"><label for="q25d">d. DHCP Server</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 26: RODC được triển khai để làm gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q26" value="a" id="q26a"><label for="q26a">a. Tăng tốc độ truy vấn DNS</label></div>
+                    <div class="option"><input type="radio" name="q26" value="b" id="q26b"><label for="q26b">b. Cải thiện hiệu suất mạng</label></div>
+                    <div class="option"><input type="radio" name="q26" value="c" id="q26c"><label for="q26c">c. Tăng cường bảo mật cho chi nhánh/văn phòng xa</label></div>
+                    <div class="option"><input type="radio" name="q26" value="d" id="q26d"><label for="q26d">d. Giảm băng thông sử dụng</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 27: Chính sách nào không thuộc bảo mật tài khoản trong AD DS?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q27" value="a" id="q27a"><label for="q27a">a. Chính sách mật khẩu</label></div>
+                    <div class="option"><input type="radio" name="q27" value="b" id="q27b"><label for="q27b">b. Chính sách bảo mật thông tin</label></div>
+                    <div class="option"><input type="radio" name="q27" value="c" id="q27c"><label for="q27c">c. Chính sách khóa tài khoản</label></div>
+                    <div class="option"><input type="radio" name="q27" value="d" id="q27d"><label for="q27d">d. Chính sách Kerberos</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 28: NTFS dùng danh sách nào để xác định quyền truy cập?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q28" value="a" id="q28a"><label for="q28a">a. Access Control List (ACL)</label></div>
+                    <div class="option"><input type="radio" name="q28" value="b" id="q28b"><label for="q28b">b. User Rights Assignment</label></div>
+                    <div class="option"><input type="radio" name="q28" value="c" id="q28c"><label for="q28c">c. Security Policy</label></div>
+                    <div class="option"><input type="radio" name="q28" value="d" id="q28d"><label for="q28d">d. Permission Matrix</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 29: Record dùng để định vị dịch vụ trong Active Directory?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q29" value="a" id="q29a"><label for="q29a">a. SRV</label></div>
+                    <div class="option"><input type="radio" name="q29" value="b" id="q29b"><label for="q29b">b. A</label></div>
+                    <div class="option"><input type="radio" name="q29" value="c" id="q29c"><label for="q29c">c. AAAA</label></div>
+                    <div class="option"><input type="radio" name="q29" value="d" id="q29d"><label for="q29d">d. NS</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 30: LSDB của các router trong cùng một vùng OSPF phải:</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q30" value="a" id="q30a"><label for="q30a">a. Khác nhau hoàn toàn</label></div>
+                    <div class="option"><input type="radio" name="q30" value="b" id="q30b"><label for="q30b">b. Giống nhau một phần</label></div>
+                    <div class="option"><input type="radio" name="q30" value="c" id="q30c"><label for="q30c">c. Hoàn toàn giống nhau</label></div>
+                    <div class="option"><input type="radio" name="q30" value="d" id="q30d"><label for="q30d">d. Không liên quan đến nhau</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 31: OU dùng để làm gì trong AD DS?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q31" value="a" id="q31a"><label for="q31a">a. Lưu trữ file</label></div>
+                    <div class="option"><input type="radio" name="q31" value="b" id="q31b"><label for="q31b">b. Quản lý DNS</label></div>
+                    <div class="option"><input type="radio" name="q31" value="c" id="q31c"><label for="q31c">c. Cấu hình DHCP</label></div>
+                    <div class="option"><input type="radio" name="q31" value="d" id="q31d"><label for="q31d">d. Tổ chức các đối tượng trong một domain</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 32: Phương pháp xác định phạm vi của GPO bao gồm:</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q32" value="a" id="q32a"><label for="q32a">a. Liên kết GPO với một OU</label></div>
+                    <div class="option"><input type="radio" name="q32" value="b" id="q32b"><label for="q32b">b. Tạo GPO mới</label></div>
+                    <div class="option"><input type="radio" name="q32" value="c" id="q32c"><label for="q32c">c. Xóa GPO cũ</label></div>
+                    <div class="option"><input type="radio" name="q32" value="d" id="q32d"><label for="q32d">d. Sao lưu GPO</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 33: Cấu hình OSPF: lệnh gán mạng vào một vùng?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q33" value="a" id="q33a"><label for="q33a">a. ospf network area</label></div>
+                    <div class="option"><input type="radio" name="q33" value="b" id="q33b"><label for="q33b">b. network "address" "wildcard-mask" area "area-id"</label></div>
+                    <div class="option"><input type="radio" name="q33" value="c" id="q33c"><label for="q33c">c. area network address</label></div>
+                    <div class="option"><input type="radio" name="q33" value="d" id="q33d"><label for="q33d">d. set ospf area network</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 34: Nhóm có quyền quản trị rộng cho hầu hết môi trường?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q34" value="a" id="q34a"><label for="q34a">a. Domain Admins</label></div>
+                    <div class="option"><input type="radio" name="q34" value="b" id="q34b"><label for="q34b">b. Schema Admins</label></div>
+                    <div class="option"><input type="radio" name="q34" value="c" id="q34c"><label for="q34c">c. Server Operators</label></div>
+                    <div class="option"><input type="radio" name="q34" value="d" id="q34d"><label for="q34d">d. Enterprise Admins</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 35: Một DHCP scope phải chứa thông tin nào?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q35" value="a" id="q35a"><label for="q35a">a. Chỉ địa chỉ IP</label></div>
+                    <div class="option"><input type="radio" name="q35" value="b" id="q35b"><label for="q35b">b. Chỉ subnet mask</label></div>
+                    <div class="option"><input type="radio" name="q35" value="c" id="q35c"><label for="q35c">c. Chỉ default gateway</label></div>
+                    <div class="option"><input type="radio" name="q35" value="d" id="q35d"><label for="q35d">d. Dải địa chỉ IP và subnet mask</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 36: Vì sao dùng Managed Service Accounts (MSA)?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q36" value="a" id="q36a"><label for="q36a">a. Tự động quản lý mật khẩu cho tài khoản dịch vụ</label></div>
+                    <div class="option"><input type="radio" name="q36" value="b" id="q36b"><label for="q36b">b. Tăng tốc độ đăng nhập</label></div>
+                    <div class="option"><input type="radio" name="q36" value="c" id="q36c"><label for="q36c">c. Giảm dung lượng lưu trữ</label></div>
+                    <div class="option"><input type="radio" name="q36" value="d" id="q36d"><label for="q36d">d. Cải thiện hiệu suất mạng</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 37: Chức năng của DHCP relay agent là gì?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q37" value="a" id="q37a"><label for="q37a">a. Cấp phát địa chỉ IP tĩnh</label></div>
+                    <div class="option"><input type="radio" name="q37" value="b" id="q37b"><label for="q37b">b. Chuyển tiếp broadcast DHCP sang DHCP server ở subnet khác</label></div>
+                    <div class="option"><input type="radio" name="q37" value="c" id="q37c"><label for="q37c">c. Quản lý DNS records</label></div>
+                    <div class="option"><input type="radio" name="q37" value="d" id="q37d"><label for="q37d">d. Bảo mật kết nối DHCP</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 38: FSMO viết tắt của gì trong AD DS?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q38" value="a" id="q38a"><label for="q38a">a. Flexible Single Master Operations</label></div>
+                    <div class="option"><input type="radio" name="q38" value="b" id="q38b"><label for="q38b">b. File System Master Operations</label></div>
+                    <div class="option"><input type="radio" name="q38" value="c" id="q38c"><label for="q38c">c. Federated Security Master Operations</label></div>
+                    <div class="option"><input type="radio" name="q38" value="d" id="q38d"><label for="q38d">d. Functional Server Management Operations</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 39: Lệnh kích hoạt RIP trên router?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q39" value="a" id="q39a"><label for="q39a">a. enable rip</label></div>
+                    <div class="option"><input type="radio" name="q39" value="b" id="q39b"><label for="q39b">b. router rip</label></div>
+                    <div class="option"><input type="radio" name="q39" value="c" id="q39c"><label for="q39c">c. rip enable</label></div>
+                    <div class="option"><input type="radio" name="q39" value="d" id="q39d"><label for="q39d">d. start rip</label></div>
+                </div>
+            </div>
+
+            <div class="question">
+                <div class="question-text">Câu 40: Thứ tự xử lý GPO mặc định trong Active Directory?</div>
+                <div class="options">
+                    <div class="option"><input type="radio" name="q40" value="a" id="q40a"><label for="q40a">a. Local → Site → Domain → OU</label></div>
+                    <div class="option"><input type="radio" name="q40" value="b" id="q40b"><label for="q40b">b. OU → Domain → Site → Local</label></div>
+                    <div class="option"><input type="radio" name="q40" value="c" id="q40c"><label for="q40c">c. Site → Domain → OU → Local</label></div>
+                    <div class="option"><input type="radio" name="q40" value="d" id="q40d"><label for="q40d">d. Domain → Site → OU → Local</label></div>
+                </div>
+            </div>
+
+            <button type="submit" class="submit-btn">Nộp Bài</button>
+        </form>
+
+        <div class="result" id="result">
+            <h2 id="scoreText"></h2>
+            <p id="scoreDetail"></p>
+            <p id="percentage"></p>
+            <button class="reset-btn" onclick="resetQuiz()">Làm Lại</button>
+        </div>
+    </div>
+
+    <script>
+        const questionsData = [
+            {
+                question: "Định dạng ổ đĩa nào hỗ trợ kích thước ổ đĩa lên đến 18 exabyte?",
+                options: ["ReFS", "NTFS", "FAT32", "exFAT"],
+                correct: 0
+            },
+            {
+                question: "ReFS được thiết kế để giải quyết vấn đề gì?",
+                options: ["Tăng tốc độ truy cập dữ liệu", "Cải thiện khả năng phục hồi", "Giảm dung lượng lưu trữ", "Tương thích với hệ điều hành cũ"],
+                correct: 1
+            },
+            {
+                question: "Các phương pháp phân phối hồ sơ VPN nào được hỗ trợ?",
+                options: ["Scripts", "Manual configuration only", "Automatic detection", "Bluetooth pairing"],
+                correct: 0
+            },
+            {
+                question: "Để quản lý nhóm trong AD DS, công cụ nào có thể được sử dụng?",
+                options: ["Active Directory Users and Computers", "PowerShell", "Tất cả các công cụ trên", "Group Policy Management Console"],
+                correct: 2
+            },
+            {
+                question: "Giao thức xác thực nào cung cấp bảo mật mạnh nhất?",
+                options: ["PAP", "CHAP", "MS-CHAP", "EAP"],
+                correct: 3
+            },
+            {
+                question: "Vai trò của Network Policy Server (NPS) là gì?",
+                options: ["Proxy RADIUS", "DNS Server", "File Server", "Web Server"],
+                correct: 0
+            },
+            {
+                question: "Nếu hai router có cùng priority trong chọn DR, yếu tố quyết định là?",
+                options: ["MAC address thấp hơn", "Thời gian khởi động trước", "Băng thông cao hơn", "Router ID cao hơn"],
+                correct: 3
+            },
+            {
+                question: "Nhóm nào trong AD DS chỉ dùng với ứng dụng email?",
+                options: ["Nhóm bảo mật", "Nhóm phân phối", "Nhóm toàn cục", "Nhóm cục bộ"],
+                correct: 1
+            },
+            {
+                question: "Record nào dùng để chỉ định máy chủ xử lý email cho một miền?",
+                options: ["A Record", "MX", "CNAME", "PTR"],
+                correct: 1
+            },
+            {
+                question: "Hello interval mặc định của OSPF là bao nhiêu giây?",
+                options: ["5 giây", "15 giây", "30 giây", "10 giây"],
+                correct: 3
+            },
+            {
+                question: "Thành phần nào không phải của AD DS?",
+                options: ["Domain Controller", "Global Catalog", "Schema", "Workstation"],
+                correct: 3
+            },
+            {
+                question: "DHCP failover cho phép:",
+                options: ["Một DHCP server dự phòng cho nhiều subnet", "Hai DHCP servers cung cấp địa chỉ IP cho cùng subnet", "Tự động cấu hình DNS", "Phân bổ địa chỉ IPv6"],
+                correct: 1
+            },
+            {
+                question: "Cấu hình máy chủ VPN trong Windows Server 2016 cần tối thiểu bao nhiêu NIC?",
+                options: ["Một", "Ba", "Hai", "Bốn"],
+                correct: 2
+            },
+            {
+                question: "Nhóm \"Backup Operators\" có thể khôi phục dữ liệu từ đâu?",
+                options: ["Từ bất kỳ nguồn sao lưu nào", "Chỉ từ local backup", "Chỉ từ cloud backup", "Chỉ từ tape backup"],
+                correct: 0
+            },
+            {
+                question: "Để xác định IP từ tên miền, DNS sử dụng cơ chế nào?",
+                options: ["Forward resolution", "Reverse resolution", "Dynamic resolution", "Static resolution"],
+                correct: 0
+            },
+            {
+                question: "Khác biệt chính giữa .adm và .admx trong Group Policy?",
+                options: [".admx nhanh hơn .adm", ".adm hỗ trợ nhiều ngôn ngữ hơn", ".adm gây phình to SYSVOL nếu có nhiều GPO, .admx thì không", ".admx chỉ dùng cho Windows 10"],
+                correct: 2
+            },
+            {
+                question: "Folder Redirection là gì?",
+                options: ["Thư mục đặt trên server nhưng hiển thị như nằm trên ổ cục bộ", "Thư mục ẩn trên máy client", "Thư mục chỉ đọc", "Thư mục tạm thời"],
+                correct: 0
+            },
+            {
+                question: "NTFS hỗ trợ cluster size lớn nhất là:",
+                options: ["512 KB", "1024 KB", "4096 KB", "2048 KB"],
+                correct: 3
+            },
+            {
+                question: "Tính năng giúp RIP không quảng bá tuyến học từ cùng giao tiếp?",
+                options: ["Route poisoning", "Split horizon", "Hold-down timer", "Triggered update"],
+                correct: 1
+            },
+            {
+                question: "Quyền nên gán cho Creator/Owner ở thư mục gốc khi redirect?",
+                options: ["Read only", "Modify – This Folder Only", "Full control – Subfolders and Files Only", "Write – This Folder, Subfolders and Files"],
+                correct: 2
+            },
+            {
+                question: "Công nghệ RAID nào không được sử dụng?",
+                options: ["RAID 2", "RAID 0", "RAID 1", "RAID 5"],
+                correct: 0
+            },
+            {
+                question: "Giao thức hỗ trợ thuật toán IPsec mới nhất (bảo mật/toàn vẹn/xác thực)?",
+                options: ["IKEv1", "L2TP", "IKEv2", "PPTP"],
+                correct: 2
+            },
+            {
+                question: "Khi nào dùng Logon Scripts trong Group Policy?",
+                options: ["Cài đặt phần mềm", "Cấu hình firewall", "Tạo user mới", "Ánh xạ ổ đĩa hoặc tác vụ khi người dùng đăng nhập"],
+                correct: 3
+            },
+            {
+                question: "Tùy chọn Group Policy khác với Cài đặt Group Policy ở điểm nào?",
+                options: ["Tốc độ xử lý nhanh hơn", "Hỗ trợ nhiều hệ điều hành hơn", "Dễ cấu hình hơn", "Cho phép quản lý cài đặt trước đây không thể bằng GPO"],
+                correct: 3
+            },
+            {
+                question: "TGT (Ticket Granting Ticket) phát hành bởi đâu khi user đăng nhập?",
+                options: ["Domain Controller", "Client computer", "DNS Server", "DHCP Server"],
+                correct: 0
+            },
+            {
+                question: "RODC được triển khai để làm gì?",
+                options: ["Tăng tốc độ truy vấn DNS", "Cải thiện hiệu suất mạng", "Tăng cường bảo mật cho chi nhánh/văn phòng xa", "Giảm băng thông sử dụng"],
+                correct: 2
+            },
+            {
+                question: "Chính sách nào không thuộc bảo mật tài khoản trong AD DS?",
+                options: ["Chính sách mật khẩu", "Chính sách bảo mật thông tin", "Chính sách khóa tài khoản", "Chính sách Kerberos"],
+                correct: 1
+            },
+            {
+                question: "NTFS dùng danh sách nào để xác định quyền truy cập?",
+                options: ["Access Control List (ACL)", "User Rights Assignment", "Security Policy", "Permission Matrix"],
+                correct: 0
+            },
+            {
+                question: "Record dùng để định vị dịch vụ trong Active Directory?",
+                options: ["SRV", "A", "AAAA", "NS"],
+                correct: 0
+            },
+            {
+                question: "LSDB của các router trong cùng một vùng OSPF phải:",
+                options: ["Khác nhau hoàn toàn", "Giống nhau một phần", "Hoàn toàn giống nhau", "Không liên quan đến nhau"],
+                correct: 2
+            },
+            {
+                question: "OU dùng để làm gì trong AD DS?",
+                options: ["Lưu trữ file", "Quản lý DNS", "Cấu hình DHCP", "Tổ chức các đối tượng trong một domain"],
+                correct: 3
+            },
+            {
+                question: "Phương pháp xác định phạm vi của GPO bao gồm:",
+                options: ["Liên kết GPO với một OU", "Tạo GPO mới", "Xóa GPO cũ", "Sao lưu GPO"],
+                correct: 0
+            },
+            {
+                question: "Cấu hình OSPF: lệnh gán mạng vào một vùng?",
+                options: ["ospf network area", "network \"address\" \"wildcard-mask\" area \"area-id\"", "area network address", "set ospf area network"],
+                correct: 1
+            },
+            {
+                question: "Nhóm có quyền quản trị rộng cho hầu hết môi trường?",
+                options: ["Domain Admins", "Schema Admins", "Server Operators", "Enterprise Admins"],
+                correct: 3
+            },
+            {
+                question: "Một DHCP scope phải chứa thông tin nào?",
+                options: ["Chỉ địa chỉ IP", "Chỉ subnet mask", "Chỉ default gateway", "Dải địa chỉ IP và subnet mask"],
+                correct: 3
+            },
+            {
+                question: "Vì sao dùng Managed Service Accounts (MSA)?",
+                options: ["Tự động quản lý mật khẩu cho tài khoản dịch vụ", "Tăng tốc độ đăng nhập", "Giảm dung lượng lưu trữ", "Cải thiện hiệu suất mạng"],
+                correct: 0
+            },
+            {
+                question: "Chức năng của DHCP relay agent là gì?",
+                options: ["Cấp phát địa chỉ IP tĩnh", "Chuyển tiếp broadcast DHCP sang DHCP server ở subnet khác", "Quản lý DNS records", "Bảo mật kết nối DHCP"],
+                correct: 1
+            },
+            {
+                question: "FSMO viết tắt của gì trong AD DS?",
+                options: ["Flexible Single Master Operations", "File System Master Operations", "Federated Security Master Operations", "Functional Server Management Operations"],
+                correct: 0
+            },
+            {
+                question: "Lệnh kích hoạt RIP trên router?",
+                options: ["enable rip", "router rip", "rip enable", "start rip"],
+                correct: 1
+            },
+            {
+                question: "Thứ tự xử lý GPO mặc định trong Active Directory?",
+                options: ["Local → Site → Domain → OU", "OU → Domain → Site → Local", "Site → Domain → OU → Local", "Domain → Site → OU → Local"],
+                correct: 0
+            }
+        ];
+
+        let shuffledQuestions = [];
+        let userAnswers = {};
+        const form = document.getElementById('quizForm');
+        const result = document.getElementById('result');
+        const progressBar = document.getElementById('progressBar');
+
+        function shuffle(array) {
+            const newArray = [...array];
+            for (let i = newArray.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
+            }
+            return newArray;
+        }
+
+        function renderQuiz() {
+            shuffledQuestions = shuffle(questionsData);
+            form.innerHTML = '';
+            
+            shuffledQuestions.forEach((q, index) => {
+                const shuffledOptions = q.options.map((opt, idx) => ({ text: opt, originalIndex: idx }));
+                const shuffled = shuffle(shuffledOptions);
+                
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <div class="question-text">Câu ${index + 1}: ${q.question}</div>
+                    <div class="options">
+                        ${shuffled.map((opt, optIdx) => `
+                            <div class="option">
+                                <input type="radio" name="q${index}" value="${opt.originalIndex}" id="q${index}_${optIdx}">
+                                <label for="q${index}_${optIdx}">${String.fromCharCode(97 + optIdx)}. ${opt.text}</label>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                form.appendChild(questionDiv);
+            });
+            
+            const submitBtn = document.createElement('button');
+            submitBtn.type = 'submit';
+            submitBtn.className = 'submit-btn';
+            submitBtn.textContent = 'Nộp Bài';
+            form.appendChild(submitBtn);
+        }
+
+        // Update progress bar
+        document.addEventListener('change', function(e) {
+            if (e.target.type === 'radio') {
+                let answered = 0;
+                shuffledQuestions.forEach((_, index) => {
+                    if (document.querySelector(`input[name="q${index}"]:checked`)) {
+                        answered++;
+                    }
+                });
+                const progress = (answered / shuffledQuestions.length) * 100;
+                progressBar.style.width = progress + '%';
+            }
+        });
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            let score = 0;
+            let resultDetails = [];
+            
+            shuffledQuestions.forEach((q, index) => {
+                const selected = document.querySelector(`input[name="q${index}"]:checked`);
+                const correctAnswer = q.correct;
+                const options = document.querySelectorAll(`input[name="q${index}"]`);
+                
+                let userAnswer = null;
+                let isCorrect = false;
+                
+                options.forEach(option => {
+                    const parent = option.parentElement;
+                    parent.classList.remove('correct', 'incorrect');
+                    
+                    if (parseInt(option.value) === correctAnswer) {
+                        parent.classList.add('correct');
+                    }
+                    
+                    if (selected && option === selected) {
+                        userAnswer = parseInt(option.value);
+                        if (parseInt(option.value) === correctAnswer) {
+                            score++;
+                            isCorrect = true;
+                        } else {
+                            parent.classList.add('incorrect');
+                        }
+                    }
+                });
+                
+                resultDetails.push({
+                    questionNum: index + 1,
+                    question: q.question,
+                    userAnswer: userAnswer !== null ? q.options[userAnswer] : 'Không trả lời',
+                    correctAnswer: q.options[correctAnswer],
+                    isCorrect: isCorrect
+                });
+            });
+            
+            const percentage = ((score / shuffledQuestions.length) * 100).toFixed(1);
+            
+            let detailsHTML = '<div style="text-align: left; margin-top: 20px; max-height: 400px; overflow-y: auto;">';
+            resultDetails.forEach(detail => {
+                const icon = detail.isCorrect ? '✓' : '✗';
+                const color = detail.isCorrect ? '#28a745' : '#dc3545';
+                detailsHTML += `
+                    <div style="margin-bottom: 15px; padding: 10px; background: rgba(255,255,255,0.1); border-radius: 5px;">
+                        <div style="font-weight: bold; color: ${color};">${icon} Câu ${detail.questionNum}: ${detail.question}</div>
+                        <div style="margin-top: 5px;">Bạn chọn: ${detail.userAnswer}</div>
+                        ${!detail.isCorrect ? `<div style="margin-top: 5px; color: #90EE90;">Đáp án đúng: ${detail.correctAnswer}</div>` : ''}
+                    </div>
+                `;
+            });
+            detailsHTML += '</div>';
+            
+            document.getElementById('scoreText').textContent = `Kết Quả: ${score}/${shuffledQuestions.length}`;
+            document.getElementById('scoreDetail').innerHTML = `Bạn đã trả lời đúng ${score} câu trong tổng số ${shuffledQuestions.length} câu<br>Điểm số: ${percentage}%` + detailsHTML;
+            document.getElementById('percentage').textContent = '';
+            
+            result.classList.add('show');
+            result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            
+            const inputs = form.querySelectorAll('input');
+            inputs.forEach(input => input.disabled = true);
+            document.querySelector('.submit-btn').disabled = true;
+        });
+
+        function resetQuiz() {
+            userAnswers = {};
+            result.classList.remove('show');
+            progressBar.style.width = '0%';
+            renderQuiz();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Initialize quiz on load
+        renderQuiz();
+    </script>
+</body>
+</html>
